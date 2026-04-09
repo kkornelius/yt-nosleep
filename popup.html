@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>YT Clean Tools</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 280px;
+      background: #0f0f0f;
+      color: #f1f1f1;
+      font-family: 'DM Mono', monospace;
+      padding: 0 0 12px 0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .header {
+      background: #ff0000;
+      padding: 14px 16px 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '▶';
+      position: absolute;
+      right: -8px;
+      top: -12px;
+      font-size: 72px;
+      color: rgba(255,255,255,0.07);
+      line-height: 1;
+    }
+
+    .header h1 {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: #fff;
+    }
+
+    .header p {
+      font-size: 10px;
+      color: rgba(255,255,255,0.65);
+      margin-top: 2px;
+      letter-spacing: 0.02em;
+    }
+
+    .section-label {
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      color: #555;
+      padding: 12px 16px 6px;
+      text-transform: uppercase;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 16px;
+      transition: background 0.15s;
+      cursor: pointer;
+      gap: 10px;
+    }
+
+    .toggle-row:hover {
+      background: #1a1a1a;
+    }
+
+    .toggle-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+    }
+
+    .toggle-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #e8e8e8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toggle-desc {
+      font-size: 10px;
+      color: #555;
+      line-height: 1.3;
+    }
+
+    /* Toggle Switch */
+    .switch {
+      position: relative;
+      width: 36px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .switch input { display: none; }
+
+    .slider {
+      position: absolute;
+      inset: 0;
+      background: #2a2a2a;
+      border-radius: 20px;
+      border: 1px solid #333;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .slider::before {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background: #555;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    input:checked + .slider {
+      background: #ff0000;
+      border-color: #cc0000;
+    }
+
+    input:checked + .slider::before {
+      background: #fff;
+      transform: translateX(16px);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #1e1e1e;
+      margin: 4px 16px;
+    }
+
+    .footer {
+      padding: 10px 16px 0;
+      text-align: center;
+      font-size: 9px;
+      color: #333;
+      letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>YT Clean Tools</h1>
+    <p>v7.0 — Toggle fitur di bawah</p>
+  </div>
+
+  <div class="section-label">Iklan</div>
+
+  <div class="toggle-row">
+    <div class="toggle-info">
+      <span class="toggle-label">🚫 Ad-Killer</span>
+      <span class="toggle-desc">Skip & blokir iklan otomatis</span>
+    </div>
+    <label class="switch">
+      <input type="checkbox" id="toggle-adkiller">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="toggle-row">
+    <div class="toggle-info">
+      <span class="toggle-label">▶️ NonStop</span>
+      <span class="toggle-desc">Auto-klik "Lanjutkan menonton"</span>
+    </div>
+    <label class="switch">
+      <input type="checkbox" id="toggle-nonstop">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <hr class="divider" />
+  <div class="section-label">Tombol Video</div>
+
+  <div class="toggle-row">
+    <div class="toggle-info">
+      <span class="toggle-label">🖼️ Thumbnail & Download</span>
+      <span class="toggle-desc">Tampilkan tombol Video & MP3</span>
+    </div>
+    <label class="switch">
+      <input type="checkbox" id="toggle-buttons">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="toggle-row">
+    <div class="toggle-info">
+      <span class="toggle-label">📸 Screenshot Frame</span>
+      <span class="toggle-desc">Capture frame video saat ini</span>
+    </div>
+    <label class="switch">
+      <input type="checkbox" id="toggle-screenshot">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="toggle-row">
+    <div class="toggle-info">
+      <span class="toggle-label">🔁 Loop Video</span>
+      <span class="toggle-desc">Tombol loop tanpa klik kanan</span>
+    </div>
+    <label class="switch">
+      <input type="checkbox" id="toggle-loop">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <p class="footer">Reload tab YouTube setelah ganti toggle</p>
+
+  <script src="popup.js"></script>
+</body>
+</html>
